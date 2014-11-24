@@ -61,6 +61,11 @@ PATH=$build_dir/vendor/node/bin:$PATH
 status "Updating to latest npm"
 npm update -g npm
 
+sudo apt-get install fontforge
+wget http://people.mozilla.com/~jkew/woff/woff-code-latest.zip
+unzip woff-code-latest.zip -d sfnt2woff && cd sfnt2woff && make && sudo mv sfnt2woff /usr/local/bin/
+gem install fontcustom
+
 status "Downloading and installing nginx"
 nginx_url=http://www.brettwhitelaw.com/pkg/nginx-1.6.0.tar.gz
 curl $nginx_url -s -o - | tar xzf - -C $build_dir/vendor
